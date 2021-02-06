@@ -30,6 +30,15 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/create', (req, res) => {
+  res.render('new')
+})
+
+app.get('/edit', (req, res) => {
+  res.render('edit')
+})
+
+
 app.listen(port, () => {
   console.log('Listening')
 })

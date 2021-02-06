@@ -1,1 +1,46 @@
-<p>This is daddy's expense tracker</p>
+{{!-- container --}}
+<div class="container-sm mt-5 mb-3 px-5" style="max-width: 650px;">
+  <form action="">
+    <div class="form-group mb-3">
+      <label for="category">類別</label>
+      <select class="form-control" id="category">
+        <option>Household</option>
+        <option>Transport</option>
+        <option>Entertainment</option>
+        <option>Grocery</option>
+        <option>Others</option>
+      </select>
+    </div>
+  </form>
+
+  <div class='d-flex justify-content-between align-items-start mb-3'>
+    <p>總金額：</p>
+    <div class="pr-1"><span class='h1 display-1'>25260</span></div>
+  </div>
+
+  <ul class='list-group mb-3'>
+    <li class='list-group-item'>
+      <div class="wrapper d-flex justify-content-between">
+        <div class="left d-flex align-items-center">
+          <div class="icon mr-3">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <div class="content">
+            <p class="mb-0">午餐</p>
+            <small>2019/04/23</small>
+          </div>
+        </div>
+        <div class="right d-flex align-items-center">
+          <div class="content">
+            <span class='mr-3'>60</span>
+          </div>
+          <div class="button">
+            <a class='mr-1 py-2 badge badge-primary' role='btn' href="/edit/:id">修改</a>
+            <a class='py-2 badge badge-danger' role='btn' href="/delete">刪除</a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <a href="/create" class="btn btn-success">新增支出</a>
