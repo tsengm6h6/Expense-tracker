@@ -1,5 +1,5 @@
 <div class="container-sm mt-5 mb-3 px-5" style="max-width: 650px;">
-  <form action="/expense" method="POST">
+  <form action="/expense/new" method="POST">
     <div class="form-group row mb-5">
       <div class="col-2">
         <small><b class="text-danger mr-1">*</b>必填欄位</small>
@@ -31,11 +31,11 @@
       <div class="col">
         <select class="form-control" id="category" name='category'>
           <option selected disabled>---請選擇---</option>
-          <option name='household' value="household">家居物業</option>
-          <option name='transport' value="transport">交通出行</option>
-          <option name='entertainment' value="entertainment">休閒娛樂</option>
-          <option name='grocery' value="grocery">餐飲食品</option>
-          <option name='others' value="others">其他</option>
+          <option value="fas fa-home">家居物業</option>
+          <option value="fas fa-shuttle-van">交通出行</option>
+          <option value="fas fa-grin-beam">休閒娛樂</option>
+          <option value="fas fa-utensils">餐飲食品</option>
+          <option value="fas fa-pen">其他</option>
         </select>
       </div>
     </div>

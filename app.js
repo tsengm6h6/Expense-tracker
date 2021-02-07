@@ -80,6 +80,38 @@ app.post('/expense/new', (req, res) => {
     .catch(err => console.log(err))
 })
 
+// 點擊修改按鈕
+app.get('/expense/:id/edit', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .lean()
+    .then(theRecord => {
+      console.log(theRecord)
+      // const date = theRecord.date.toISOString().split('T')[0]
+      let date = new Date(theRecord.date)
+      date = moment(date).format().split('T')[0]
+      console.log(date)
+      res.render('edit', { theRecord, date })
+    })
+    .catch(err => console.log(err))
+})
+
+// 送出修改表單，TODO:要改成PUT
+app.post('/expense/:id/edit', (req, res) => {
+  const id = req.params.id
+  const { title, date, category, amount } = req.body
+  return Record.findById(id)
+    .then(theRecord => {
+      theRecord.title = title
+      theRecord.date = date
+      theRecord.category = category
+      theRecord.amount = amount
+      return theRecord.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
 app.listen(port, () => {
   console.log('Listening')
 })
