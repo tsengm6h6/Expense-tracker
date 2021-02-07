@@ -19,36 +19,52 @@ db.once('open', () => {
   Record.find()
     .lean()
     .then(record => {
-      const data = {
-        household: [],
-        transport: [],
-        entertainment: [],
-        grocery: [],
-        other: []
-      }
+      const data = [
+        {
+          _id: 'fas fa-home',
+          item: []
+        },
+        {
+          _id: 'fas fa-shuttle-van',
+          item: []
+        },
+        {
+          _id: 'fas fa-grin-beam',
+          item: []
+        },
+        {
+          _id: 'fas fa-utensils',
+          item: []
+        },
+        {
+          _id: 'fas fa-pen',
+          item: []
+        }
+      ]
       record.forEach(item => {
         const cat = item.category
         switch (cat) {
           case 'fas fa-home':
-            data.household.push(item)
+            data[0].item.push(item)
             break
           case 'fas fa-shuttle-van':
-            data.transport.push(item)
+            data[1].item.push(item)
             break
           case 'fas fa-grin-beam':
-            data.entertainment.push(item)
+            data[2].item.push(item)
             break
           case 'fas fa-utensils':
-            data.grocery.push(item)
+            data[3].item.push(item)
             break
           case 'fas fa-pen':
-            data.other.push(item)
+            data[4].item.push(item)
             break
           default:
-            data.other.push(item)
+            data[4].item.push(item)
             console.log('category not find')
         }
       })
+      console.log(data)
       Category.insertMany(data)
     })
     .then(console.log('done'))

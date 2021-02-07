@@ -1,15 +1,16 @@
 {{!-- container --}}
 <div class="container-sm mt-5 mb-3 px-5" style="max-width: 650px;">
-  <form action="">
+  <form name='filter' action="/" method="POST">
     <div class="form-group mb-3">
       <label for="category">類別</label>
-      <select class="form-control" id="category" name='category'>
-        <option selected disabled>---請選擇---</option>
-        <option value="fas fa-home">家居物業</option>
-        <option value="fas fa-shuttle-van">交通出行</option>
-        <option value="fas fa-grin-beam">休閒娛樂</option>
-        <option value="fas fa-utensils">餐飲食品</option>
-        <option value="fas fa-pen">其他</option>
+      {{!-- TODO: 顯示選擇的項目 --}}
+      <select class="form-control" id="category" name='category' onchange="filter.submit()">
+        <option value="none" {{isSelected records.category "none" }} selected disabled>---請選擇---</option>
+        <option value="fas fa-home" {{isSelected records.category "fas fa-home" }}>家居物業</option>
+        <option value="fas fa-shuttle-van" {{isSelected records.category "fas fa-shuttle-van" }}>交通出行</option>
+        <option value="fas fa-grin-beam" {{isSelected records.category "fas fa-grin-beam" }}>休閒娛樂</option>
+        <option value="fas fa-utensils" {{isSelected records.category "fas fa-utensils" }}>餐飲食品</option>
+        <option value="fas fa-pen" {{isSelected records.category "fas fa-pen" }}>其他</option>
       </select>
     </div>
   </form>

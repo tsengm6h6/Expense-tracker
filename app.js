@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // require record model
 const Record = require('./models/record')
+const Category = require('./models/category')
 
 // require moment
 const moment = require('moment')
@@ -24,8 +25,8 @@ const moment = require('moment')
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   helpers: {
-    isSelected: function (theRecord, value) {
-      if (theRecord.category === value) return 'selected'
+    isSelected: function (cat, value) {
+      if (cat === value) return 'selected'
     }
   }
 }))
@@ -47,11 +48,31 @@ app.get('/', (req, res) => {
   return Record.find()
     .lean()
     .then(records => {
+      console.log(records)
       // count totalAmount
       let totalAmount = 0
       records.forEach(item => {
         totalAmount = totalAmount + item.amount
       })
+      res.render('index', { records, totalAmount })
+    })
+    .catch(err => console.log(err))
+})
+
+app.post('/', (req, res) => {
+  const { category } = req.body
+  // console.log(category)
+  return Category.find()
+    .lean()
+    .then((cat) => {
+      // console.log(cat)
+      const index = cat.findIndex((item) => item._id === category)
+      const records = cat[index].item
+      let totalAmount = 0
+      records.forEach(item => {
+        totalAmount = totalAmount + item.amount
+      })
+      console.log(records, index)
       res.render('index', { records, totalAmount })
     })
     .catch(err => console.log(err))
