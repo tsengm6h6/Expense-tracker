@@ -15,32 +15,34 @@
 
   <div class='d-flex justify-content-between align-items-start mb-3'>
     <p>總金額：</p>
-    <div class="pr-1"><span class='h1 display-1'>25260</span></div>
+    <div class="pr-1"><span class='h1 display-1'>{{totalAmount}}</span></div>
   </div>
 
   <ul class='list-group mb-3'>
+    {{#each records}}
     <li class='list-group-item'>
       <div class="wrapper d-flex justify-content-between">
         <div class="left d-flex align-items-center">
           <div class="icon mr-3">
-            <i class="fas fa-utensils"></i>
+            <i class="{{this.category}}"></i>
           </div>
           <div class="content">
-            <p class="mb-0">午餐</p>
-            <small>2019/04/23</small>
+            <p class="mb-0">{{this.title}}</p>
+            <small>{{this.date}}</small>
           </div>
         </div>
         <div class="right d-flex align-items-center">
           <div class="content">
-            <span class='mr-3'>60</span>
+            <span class='mr-3'>{{this.amount}}</span>
           </div>
-          <div class="button">
-            <a class='mr-1 py-2 badge badge-primary' role='btn' href="/edit/:id">修改</a>
-            <a class='py-2 badge badge-danger' role='btn' href="/delete">刪除</a>
-          </div>
+          <form action='/expense/{{this._id}}/delete' method="POST" class="button">
+            <a class='mr-1 py-2 badge badge-primary' role='btn' href="/expense/{{this._id}}/edit">修改</a>
+            <button class='py-2 badge badge-danger' type="submit">刪除</button>
+          </form>
         </div>
       </div>
     </li>
+    {{/each}}
   </ul>
 
   <a href="/expense/new" class="btn btn-success">新增支出</a>

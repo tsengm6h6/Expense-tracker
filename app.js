@@ -17,8 +17,18 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // require record model
 const Record = require('./models/record')
 
+// require moment
+const moment = require('moment')
+
 // setting template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    isSelected: function (theRecord, value) {
+      if (theRecord.category === value) return 'selected'
+    }
+  }
+}))
 app.set('view engine', 'handlebars')
 
 // setting connection message
@@ -34,7 +44,17 @@ db.once('open', () => {
 
 // setting routes
 app.get('/', (req, res) => {
-  res.render('index')
+  return Record.find()
+    .lean()
+    .then(records => {
+      // count totalAmount
+      let totalAmount = 0
+      records.forEach(item => {
+        totalAmount = totalAmount + item.amount
+      })
+      res.render('index', { records, totalAmount })
+    })
+    .catch(err => console.log(err))
 })
 
 // 點擊新增支出按鈕
@@ -42,15 +62,20 @@ app.get('/expense/new', (req, res) => {
   res.render('new')
 })
 
-// 點擊修改按鈕
-app.get('/edit/:id', (req, res) => {
-  res.render('edit')
-})
-
 // 送出新增表單
-app.post('/expense', (req, res) => {
-  const { title, date, category, amount } = req.body
-  return Record.create({ title, date, category, amount })
+app.post('/expense/new', (req, res) => {
+  const { title, category, amount } = req.body
+  const date = req.body.date
+  console.log(date)
+  console.log(moment(date).format('YYYY/MM/DD'))
+
+  // TODO: 必填驗證
+  return Record.create({
+    title,
+    date: moment(date).format('YYYY/MM/DD'),
+    category,
+    amount
+  })
     .then(res.redirect('/'))
     .catch(err => console.log(err))
 })
