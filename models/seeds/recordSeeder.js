@@ -15,6 +15,6 @@ db.on('error', () => {
 
 db.once('open', () => {
   console.log('mongodb connected!')
-  Record.insertMany(daddyExpense)
+  Record.insertMany(daddyExpense.results)
   console.log('done')
 })

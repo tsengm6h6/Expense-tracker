@@ -66,9 +66,6 @@ app.get('/expense/new', (req, res) => {
 app.post('/expense/new', (req, res) => {
   const { title, category, amount } = req.body
   const date = req.body.date
-  console.log(date)
-  console.log(moment(date).format('YYYY/MM/DD'))
-
   // TODO: 必填驗證
   return Record.create({
     title,
@@ -86,11 +83,9 @@ app.get('/expense/:id/edit', (req, res) => {
   Record.findById(id)
     .lean()
     .then(theRecord => {
-      console.log(theRecord)
       // const date = theRecord.date.toISOString().split('T')[0]
       let date = new Date(theRecord.date)
       date = moment(date).format().split('T')[0]
-      console.log(date)
       res.render('edit', { theRecord, date })
     })
     .catch(err => console.log(err))
