@@ -112,6 +112,15 @@ app.post('/expense/:id/edit', (req, res) => {
     .catch(err => console.log(err))
 })
 
+// 刪除支出
+app.post('/expense/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(theRecord => theRecord.remove())
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
 app.listen(port, () => {
   console.log('Listening')
 })
