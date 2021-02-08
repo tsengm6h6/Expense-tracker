@@ -1,60 +1,32 @@
-<div class="container-sm mt-5 mb-3 px-5" style="max-width: 650px;">
-  <form action="/expense/new" method="POST">
-    <div class="form-group row mb-5">
-      <div class="col-2">
-        <small><b class="text-danger mr-1">*</b>必填欄位</small>
-      </div>
-      <div class="col">
-        <h5 class='text-center'>請輸入您的支出</h5>
-      </div>
-    </div>
-    <div class="form-group row mb-4">
-      <div class="col-2">
-        <label for="title">名稱<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <input type="text" id='title' name='title' class='form-control'>
-      </div>
-    </div>
-    <div class="form-group row mb-4">
-      <div class="col-2">
-        <label for="date">日期<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <input type="date" id='date' name='date' class='form-control'>
-      </div>
-    </div>
-    <div class="form-group row mb-4">
-      <div class="col-2">
-        <label for="category">類別<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <select class="form-control" id="category" name='category'>
-          <option selected disabled>---請選擇---</option>
-          <option value="fas fa-home">家居物業</option>
-          <option value="fas fa-shuttle-van">交通出行</option>
-          <option value="fas fa-grin-beam">休閒娛樂</option>
-          <option value="fas fa-utensils">餐飲食品</option>
-          <option value="fas fa-pen">其他</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row mb-5">
-      <div class="col-2">
-        <label for="amount">金額<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <input type="number" id='amount' name='amount' class='form-control'>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col offset-2">
-        <div class="row">
-          <div class="col-auto mx-auto">
-            <button type="submit" class="btn btn-info">新增支出</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
+<form action="/expense/new" method="POST" class="container add-form">
+  {{!-- title --}}
+  <div class="form-item">
+    <p>*為必填欄位</p>
+    <span>請填入您的支出</span>
+  </div>
+  {{!-- form --}}
+  <div class="form-item">
+    <label for='title'>名稱：</label>
+    <input type="text" id='title' name='title'>
+  </div>
+  <div class="form-item">
+    <label for='date'>日期：</label>
+    <input type="date" id='date' name='date'>
+  </div>
+  <div class="form-item">
+    <label for='amount'>金額：</label>
+    <input type="number" id='amount' name='amount'>
+  </div>
+  <div class="form-item">
+    <label for='category'>類別：</label>
+    <select id="category" name='category'>
+      <option selected disabled>---請選擇---</option>
+      <option value="fas fa-home">家居物業</option>
+      <option value="fas fa-shuttle-van">交通出行</option>
+      <option value="fas fa-grin-beam">休閒娛樂</option>
+      <option value="fas fa-utensils">餐飲食品</option>
+      <option value="fas fa-pen">其他</option>
+    </select>
+  </div>
+  <button type="submit" class="icon add-icon"><i class="fas fa-plus"></i></button>
+</form>

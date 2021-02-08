@@ -1,60 +1,39 @@
-<div class="container-sm mt-5 mb-3 px-5" style="max-width: 650px;">
-  <form action="/expense/{{theRecord._id}}/edit" method="POST">
-    <div class="form-group row mb-5">
-      <div class="col-2">
-        <small><b class="text-danger mr-1">*</b>必填欄位</small>
-      </div>
-      <div class="col">
-        <h5 class='text-center'>請修改您的支出</h5>
-      </div>
+<form action="/expense/{{theRecord._id}}/edit" method="POST" class="container">
+  {{!-- title --}}
+  <div class="form-item">
+    <p>*為必填欄位</p>
+    <span>請編輯您的支出</span>
+  </div>
+  {{!-- form --}}
+  <div class="form-item">
+    <label for='title'>名稱：</label>
+    <input type="text" id='title' name='title' value="{{theRecord.title}}">
+  </div>
+  <div class="form-item">
+    <label for='date'>日期：</label>
+    <input type="date" id='date' name='date' value="{{date}}">
+  </div>
+  <div class="form-item">
+    <label for='amount'>金額：</label>
+    <input type="number" id='amount' name='amount' value="{{theRecord.amount}}">
+  </div>
+  <div class="form-item">
+    <label for='category'>類別：</label>
+    <select id="category" name='category'>
+      <option value="fas fa-home" {{isSelected theRecord.category "fas fa-home" }}>家居物業</option>
+      <option value="fas fa-shuttle-van" {{isSelected theRecord.category "fas fa-shuttle-van" }}>交通出行</option>
+      <option value="fas fa-grin-beam" {{isSelected theRecord.category "fas fa-grin-beam" }}>休閒娛樂</option>
+      <option value="fas fa-utensils" {{isSelected theRecord.category "fas fa-utensils" }}>餐飲食品</option>
+      <option value="fas fa-pen" {{isSelected theRecord.category "fas fa-pen" }}>其他</option>
+    </select>
+  </div>
+  <button type="submit" class="icon add-icon"><i class="fas fa-plus"></i></button>
+  <div class="form-item">
+    <div class="button">
+      <button class='edit-btn' type="submit">送出修改</button>
+      <a href="/">
+        <div class='edit-btn leave'>取消離開</div>
+      </a>
     </div>
-    <div class="form-group row mb-4">
-      <div class="col-2">
-        <label for="title">名稱<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <input type="text" id='title' name='title' class='form-control' value="{{theRecord.title}}">
-      </div>
-    </div>
-    <div class="form-group row mb-4">
-      <div class="col-2">
-        <label for="date">日期<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <input type="date" id='date' name='date' class='form-control' value="{{date}}">
-      </div>
-    </div>
-    <div class="form-group row mb-4">
-      <div class="col-2">
-        <label for="category">類別<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <select class="form-control" id="category" name='category'>
-          <option value="fas fa-home" {{isSelected theRecord.category "fas fa-home" }}>家居物業</option>
-          <option value="fas fa-shuttle-van" {{isSelected theRecord.category "fas fa-shuttle-van" }}>交通出行</option>
-          <option value="fas fa-grin-beam" {{isSelected theRecord.category "fas fa-grin-beam" }}>休閒娛樂</option>
-          <option value="fas fa-utensils" {{isSelected theRecord.category "fas fa-utensils" }}>餐飲食品</option>
-          <option value="fas fa-pen" {{isSelected theRecord.category "fas fa-pen" }}>其他</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row mb-5">
-      <div class="col-2">
-        <label for="amount">金額<b class="text-danger ml-1">*</b>：</label>
-      </div>
-      <div class="col">
-        <input type="number" id='amount' name='amount' class='form-control' value="{{theRecord.amount}}">
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col offset-2">
-        <div class="row">
-          <div class="col-auto mx-auto">
-            <button class="btn btn-warning">送出修改</button>
-            <a href="/" class="btn btn-info" role="button">取消離開</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
+  </div>
+</form>

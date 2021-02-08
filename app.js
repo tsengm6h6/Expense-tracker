@@ -43,6 +43,9 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+// setting static files
+app.use(express.static('public'))
+
 // setting routes
 app.get('/', (req, res) => {
   return Record.find()

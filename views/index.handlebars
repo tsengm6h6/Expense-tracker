@@ -1,50 +1,45 @@
-{{!-- container --}}
-<div class="container-sm mt-5 mb-3 px-5" style="max-width: 650px;">
-  <form name='filter' action="/" method="POST">
-    <div class="form-group mb-3">
-      <label for="category">類別</label>
-      {{!-- TODO: 顯示選擇的項目 --}}
-      <select class="form-control" id="category" name='category' onchange="filter.submit()">
-        <option value="none" {{isSelected records.category "none" }} selected disabled>---請選擇---</option>
-        <option value="fas fa-home" {{isSelected records.category "fas fa-home" }}>家居物業</option>
-        <option value="fas fa-shuttle-van" {{isSelected records.category "fas fa-shuttle-van" }}>交通出行</option>
-        <option value="fas fa-grin-beam" {{isSelected records.category "fas fa-grin-beam" }}>休閒娛樂</option>
-        <option value="fas fa-utensils" {{isSelected records.category "fas fa-utensils" }}>餐飲食品</option>
-        <option value="fas fa-pen" {{isSelected records.category "fas fa-pen" }}>其他</option>
-      </select>
-    </div>
+<div class="container">
+  <!--  filter  -->
+  <form class="form-item" name='filter' action="/" method="POST">
+    <p>類別：</p>
+    <select id="category" name='category' onchange="filter.submit()">
+      <option value="none" {{isSelected records.category "none" }} selected disabled>---請選擇---</option>
+      <option value="fas fa-home" {{isSelected records.category "fas fa-home" }}>家居物業</option>
+      <option value="fas fa-shuttle-van" {{isSelected records.category "fas fa-shuttle-van" }}>交通出行</option>
+      <option value="fas fa-grin-beam" {{isSelected records.category "fas fa-grin-beam" }}>休閒娛樂</option>
+      <option value="fas fa-utensils" {{isSelected records.category "fas fa-utensils" }}>餐飲食品</option>
+      <option value="fas fa-pen" {{isSelected records.category "fas fa-pen" }}>其他</option>
+    </select>
   </form>
-
-  <div class='d-flex justify-content-between align-items-start mb-3'>
+  <!--  totalAmount  -->
+  <div class="totalAmount">
     <p>總金額：</p>
-    <div class="pr-1"><span class='h1 display-1'>{{totalAmount}}</span></div>
+    <span>{{totalAmount}}</span>
   </div>
-
-  <ul class='list-group mb-3'>
-    {{#each records}}
-    <li class='list-group-item'>
-      <div class="wrapper d-flex justify-content-between">
-        <div class="left d-flex align-items-center">
-          <div class="icon mr-3">
-            <i class="{{this.category}}"></i>
-          </div>
-          <div class="content">
-            <p class="mb-0">{{this.title}}</p>
-            <small>{{this.date}}</small>
-          </div>
+  <!-- expense list -->
+  <div class="wrapper">
+    <ul>
+      {{#each records}}
+      <li>
+        <div class="icon item-icon">
+          <i class="{{this.category}}"></i>
         </div>
-        <div class="right d-flex align-items-center">
-          <div class="content">
-            <span class='mr-3'>{{this.amount}}</span>
-          </div>
-          <form action='/expense/{{this._id}}/delete' method="POST" class="button">
-            <a class='mr-1 py-2 badge badge-primary' role='btn' href="/expense/{{this._id}}/edit">修改</a>
-            <button class='py-2 badge badge-danger' type="submit">刪除</button>
+        <div class="item">
+          <h3>{{this.title}}</h3>
+          <p>{{this.date}}</p>
+        </div>
+        <div class="amount">{{this.amount}}</div>
+        <div class="button">
+          <a href="/expense/{{this._id}}/edit"><i class="far fa-edit"></i></a>
+          <form action='/expense/{{this._id}}/delete' method="POST">
+            <button type="submit"><i class="far fa-trash-alt"></i></button>
           </form>
         </div>
-      </div>
-    </li>
-    {{/each}}
-  </ul>
-
-  <a href="/expense/new" class="btn btn-success">新增支出</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <a href="/expense/new">
+    <div class="icon add-icon"><i class="fas fa-plus"></i></div>
+  </a>
+</div>
