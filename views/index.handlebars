@@ -32,7 +32,7 @@
         <div class="amount">{{this.amount}}</div>
         <div class="button">
           <a href="/expense/{{this._id}}/edit"><i class="far fa-edit"></i></a>
-          <form action='/expense/{{this._id}}/delete' method="POST">
+          <form action='/expense/{{this._id}}?_method=DELETE' method="POST">
             <button type="submit"><i class="far fa-trash-alt"></i></button>
           </form>
         </div>

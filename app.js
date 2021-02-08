@@ -21,6 +21,9 @@ const Category = require('./models/category')
 // require moment
 const moment = require('moment')
 
+// require method-override
+const methodOverride = require('method-override')
+
 // setting template engine
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
@@ -43,6 +46,8 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+// setting method-override
+app.use(methodOverride('_method'))
 // setting static files
 app.use(express.static('public'))
 
@@ -120,7 +125,7 @@ app.get('/expense/:id/edit', (req, res) => {
 })
 
 // 送出修改表單，TODO:要改成PUT
-app.post('/expense/:id/edit', (req, res) => {
+app.put('/expense/:id', (req, res) => {
   const id = req.params.id
   const { title, date, category, amount } = req.body
   return Record.findById(id)
@@ -136,7 +141,7 @@ app.post('/expense/:id/edit', (req, res) => {
 })
 
 // 刪除支出
-app.post('/expense/:id/delete', (req, res) => {
+app.delete('/expense/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(theRecord => theRecord.remove())
