@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/expense', { useNewUrlParser: true, useUnif
 // require Record model
 const Record = require('../record')
 
-const daddyExpense = require('../../daddyExpense')
+const records = require('../../records.json')
 
 // setting connection message
 const db = mongoose.connection
@@ -15,6 +15,11 @@ db.on('error', () => {
 
 db.once('open', () => {
   console.log('mongodb connected!')
-  Record.insertMany(daddyExpense.results)
-  console.log('done')
+  Record.insertMany(records.results)
+    .then(() => {
+      console.log('Record insert is done')
+      return db.close()
+    })
+    .then(() => console.log('db close'))
+    .catch(err => console.log(err))
 })

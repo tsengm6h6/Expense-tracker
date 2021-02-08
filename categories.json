@@ -1,0 +1,24 @@
+{
+  "results": [
+    {
+      "category": "transport",
+      "categoryIcon": "fas fa-shuttle-van"
+    },
+    {
+      "category": "household",
+      "categoryIcon": "fas fa-home"
+    },
+    {
+      "category": "entertainment",
+      "categoryIcon": "fa-grin-beam"
+    },
+    {
+      "category": "grocery",
+      "categoryIcon": "fas fa-utensils"
+    },
+    {
+      "category": "others",
+      "categoryIcon": "fas fa-pen"
+    }
+  ]
+}
