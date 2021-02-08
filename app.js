@@ -3,9 +3,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-// require mongoose and connect to mongodb
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/expense', { useNewUrlParser: true, useUnifiedTopology: true })
+// require db
+require('./config/mongoose')
 
 // require view engines
 const exphbs = require('express-handlebars')
@@ -35,17 +34,6 @@ app.engine('handlebars', exphbs({
 }))
 app.set('view engine', 'handlebars')
 
-// setting connection message
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error')
-})
-
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
-
 // setting method-override
 app.use(methodOverride('_method'))
 // setting static files
@@ -67,6 +55,7 @@ app.get('/', (req, res) => {
     .catch(err => console.log(err))
 })
 
+// filter
 app.post('/', (req, res) => {
   const { category } = req.body
   console.log(category)
@@ -90,7 +79,7 @@ app.post('/', (req, res) => {
   }
 })
 
-// 點擊新增支出按鈕
+// 取得新增頁面
 app.get('/expense/new', (req, res) => {
   res.render('new')
 })
@@ -110,7 +99,7 @@ app.post('/expense/new', (req, res) => {
     .catch(err => console.log(err))
 })
 
-// 點擊修改按鈕
+// 取得修改頁面
 app.get('/expense/:id/edit', (req, res) => {
   const id = req.params.id
   Record.findById(id)
@@ -124,7 +113,7 @@ app.get('/expense/:id/edit', (req, res) => {
     .catch(err => console.log(err))
 })
 
-// 送出修改表單，TODO:要改成PUT
+// 編輯支出
 app.put('/expense/:id', (req, res) => {
   const id = req.params.id
   const { title, date, category, amount } = req.body
