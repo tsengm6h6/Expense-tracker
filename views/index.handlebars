@@ -4,6 +4,7 @@
     <p>類別：</p>
     <select id="category" name='category' onchange="filter.submit()">
       <option value="none" {{isSelected records.category "none" }} selected disabled>---請選擇---</option>
+      <option value="all" {{isSelected records.category "all" }}>全部</option>
       <option value="fas fa-home" {{isSelected records.category "fas fa-home" }}>家居物業</option>
       <option value="fas fa-shuttle-van" {{isSelected records.category "fas fa-shuttle-van" }}>交通出行</option>
       <option value="fas fa-grin-beam" {{isSelected records.category "fas fa-grin-beam" }}>休閒娛樂</option>

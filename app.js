@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
   return Record.find()
     .lean()
     .then(records => {
-      console.log(records)
+      // console.log(records)
       // count totalAmount
       let totalAmount = 0
       records.forEach(item => {
@@ -64,21 +64,25 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const { category } = req.body
-  // console.log(category)
-  return Category.find()
-    .lean()
-    .then((cat) => {
-      // console.log(cat)
-      const index = cat.findIndex((item) => item._id === category)
-      const records = cat[index].item
-      let totalAmount = 0
-      records.forEach(item => {
-        totalAmount = totalAmount + item.amount
+  console.log(category)
+  if (category === 'all') {
+    return res.redirect('/')
+  } else {
+    const filteredList = []
+    let totalAmount = 0
+    return Record.find()
+      .lean()
+      .then((record) => {
+        record.forEach(item => {
+          if (item.category === category) {
+            filteredList.push(item)
+            totalAmount = totalAmount + item.amount
+          }
+        })
+        res.render('index', { records: filteredList, totalAmount })
       })
-      console.log(records, index)
-      res.render('index', { records, totalAmount })
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
+  }
 })
 
 // 點擊新增支出按鈕
