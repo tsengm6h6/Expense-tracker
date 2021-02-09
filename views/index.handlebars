@@ -1,6 +1,6 @@
 <div class="container">
   <!--  filter  -->
-  <form class="form-item" name='filter' action="/" method="POST">
+  <form class="form-item" name='filter' action="/" method="GET">
     <p>類別：</p>
     <select id="category" name='category' onchange="filter.submit()">
       <option value="all" {{equal category "all" }} selected>全部</option>
