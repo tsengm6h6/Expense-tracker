@@ -17,7 +17,7 @@ const exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   helpers: {
-    isSelected: function (cat, value) {
+    equal: function (cat, value) {
       if (cat === value) return 'selected'
     }
   }
