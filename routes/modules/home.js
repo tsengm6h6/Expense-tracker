@@ -9,38 +9,39 @@ const Category = require('../../models/category')
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: true }))
 
-// Log catIcon
-const iconList = {}
-Category.find()
-  .lean()
-  .then(cat => {
-    cat.forEach(item => {
-      iconList[item.category] = item.categoryIcon
-    })
-  })
-
 // setting routes
 router.get('/', (req, res) => {
   const category = req.query.category
   let filteredList = []
   let totalAmount = 0
-  return Record.find()
+  const iconList = {}
+  Category.find()
     .lean()
-    .then((records) => {
-      if (!category || category === 'all') {
-        filteredList.push(...records)
-      } else {
-        filteredList = records.filter(item => item.category === category)
-      }
-    })
-    .then(() => {
-      filteredList.forEach(item => {
-        totalAmount += item.amount
-        item.icon = iconList[item.category]
+    .then(cat => {
+      cat.forEach(item => {
+        iconList[item.category] = item.categoryIcon
       })
     })
     .then(() => {
-      res.render('index', { records: filteredList, totalAmount, category })
+      console.log(iconList)
+      Record.find()
+        .lean()
+        .then((records) => {
+          if (!category || category === 'all') {
+            filteredList.push(...records)
+          } else {
+            filteredList = records.filter(item => item.category === category)
+          }
+        })
+        .then(() => {
+          filteredList.forEach(item => {
+            totalAmount += item.amount
+            item.icon = iconList[item.category]
+          })
+        })
+        .then(() => {
+          return res.render('index', { records: filteredList, totalAmount, category })
+        })
     })
     .catch(err => console.log(err))
 })
