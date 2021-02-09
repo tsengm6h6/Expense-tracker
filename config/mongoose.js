@@ -1,6 +1,7 @@
 // require mongoose and connect to mongodb
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/expense', { useNewUrlParser: true, useUnifiedTopology: true })
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/expense'
+mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // setting connection message
 const db = mongoose.connection
