@@ -9,14 +9,29 @@ const Category = require('../../models/category')
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: true }))
 
+// find catIcon
+const catList = ['household', 'transport', 'entertainment', 'grocery', 'others']
+const iconList = {}
+catList.forEach(cat => {
+  Category.find({ category: cat })
+    .lean()
+    .then((cat) => {
+      const theCat = cat[0].category
+      iconList[theCat] = cat[0].categoryIcon
+    })
+    .catch(err => console.log(err))
+})
+
 // setting routes
 router.get('/', (req, res) => {
   return Record.find()
     .lean()
     .then(records => {
+      // console.log(records)
       let totalAmount = 0
       records.forEach(item => {
         totalAmount = totalAmount + item.amount
+        item.icon = iconList[item.category]
       })
       res.render('index', { records, totalAmount })
     })
@@ -50,7 +65,7 @@ router.post('/', (req, res) => {
         }) // put the icon to filtered item & render
         .then(() => {
           filteredList.forEach(item => {
-            item.category = catIcon
+            item.icon = catIcon
           })
           res.render('index', { records: filteredList, totalAmount })
         }))
