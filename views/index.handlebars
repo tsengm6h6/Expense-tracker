@@ -3,13 +3,12 @@
   <form class="form-item" name='filter' action="/" method="POST">
     <p>類別：</p>
     <select id="category" name='category' onchange="filter.submit()">
-      <option value="none" {{equal records.category "none" }} selected disabled>---請選擇---</option>
-      <option value="all" {{equal records.category "all" }}>全部</option>
-      <option value="household" {{equal records.category "household" }}>家居物業</option>
-      <option value="transport" {{equal records.category "transport" }}>交通出行</option>
-      <option value="entertainment" {{equal records.category "entertainment" }}>休閒娛樂</option>
-      <option value="grocery" {{equal records.category "grocery" }}>餐飲食品</option>
-      <option value="others" {{equal records.category "others" }}>其他</option>
+      <option value="all" {{equal category "all" }} selected>全部</option>
+      <option value="household" {{equal category "household" }}>家居物業</option>
+      <option value="transport" {{equal category "transport" }}>交通出行</option>
+      <option value="entertainment" {{equal category "entertainment" }}>休閒娛樂</option>
+      <option value="grocery" {{equal category "grocery" }}>餐飲食品</option>
+      <option value="others" {{equal category "others" }}>其他</option>
     </select>
   </form>
   <!--  totalAmount  -->

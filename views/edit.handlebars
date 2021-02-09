@@ -20,11 +20,13 @@
   <div class="form-item">
     <label for='category'>類別：</label>
     <select id="category" name='category'>
-      <option value="fas fa-home" {{isSelected theRecord.category "fas fa-home" }}>家居物業</option>
-      <option value="fas fa-shuttle-van" {{isSelected theRecord.category "fas fa-shuttle-van" }}>交通出行</option>
-      <option value="fas fa-grin-beam" {{isSelected theRecord.category "fas fa-grin-beam" }}>休閒娛樂</option>
-      <option value="fas fa-utensils" {{isSelected theRecord.category "fas fa-utensils" }}>餐飲食品</option>
-      <option value="fas fa-pen" {{isSelected theRecord.category "fas fa-pen" }}>其他</option>
+      <option value="none" {{equal theRecord.category "none" }} selected disabled>---請選擇---</option>
+      <option value="all" {{equal theRecord.category "all" }}>全部</option>
+      <option value="household" {{equal theRecord.category "household" }}>家居物業</option>
+      <option value="transport" {{equal theRecord.category "transport" }}>交通出行</option>
+      <option value="entertainment" {{equal theRecord.category "entertainment" }}>休閒娛樂</option>
+      <option value="grocery" {{equal theRecord.category "grocery" }}>餐飲食品</option>
+      <option value="others" {{equal theRecord.category "others" }}>其他</option>
     </select>
   </div>
   <button type="submit" class="icon add-icon"><i class="fas fa-plus"></i></button>
