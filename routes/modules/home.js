@@ -20,14 +20,6 @@ Category.find()
   })
   .catch(err => console.log(err))
 
-// const iconList = {
-//   transport: 'fas fa-shuttle-van',
-//   household: 'fas fa-home',
-//   entertainment: 'fas fa-grin-beam',
-//   grocery: 'fas fa-utensils',
-//   others: 'fas fa-pen'
-// }
-
 // setting routes
 router.get('/', (req, res) => {
   const category = req.query.category
