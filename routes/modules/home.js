@@ -10,14 +10,23 @@ const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: true }))
 
 // Log catIcon
-const iconList = {}
-Category.find()
-  .lean()
-  .then(cat => {
-    cat.forEach(item => {
-      iconList[item.category] = item.categoryIcon
-    })
-  })
+// const iconList = {}
+// Category.find()
+//   .lean()
+//   .then(cat => {
+//     cat.forEach(item => {
+//       iconList[item.category] = item.categoryIcon
+//     })
+//   })
+//   .catch(err => console.log(err))
+
+const iconList = {
+  transport: 'fas fa-shuttle-van',
+  household: 'fas fa-home',
+  entertainment: 'fas fa-grin-beam',
+  grocery: 'fas fa-utensils',
+  others: 'fas fa-pen'
+}
 
 // setting routes
 router.get('/', (req, res) => {
