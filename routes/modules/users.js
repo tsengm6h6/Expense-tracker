@@ -17,6 +17,9 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { userName, email, password, checkPassword } = req.body
+  // TODO: 必填未填，顯示錯誤訊息
+  // TODO: 密碼與確認密碼不符合，顯示錯誤訊息
+
   // 如果已註冊，返回原畫面，TODO:顯示錯誤訊息
   User.findOne({ email })
     .then(user => {
