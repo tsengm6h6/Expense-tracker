@@ -3,19 +3,20 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 3000
 const session = require('express-session')
+const routes = require('./routes')
 
 // require db
 require('./config/mongoose')
-
-// require routes
-const routes = require('./routes')
-app.use(routes)
 
 app.use(session({
   secret: 'DaddysSecret',
   resave: false,
   saveUninitialized: true
 }))
+
+const usePassport = require('./config/passport')
+usePassport(app)
+app.use(routes)
 
 // require view engines
 const exphbs = require('express-handlebars')
