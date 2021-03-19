@@ -7,17 +7,6 @@ const routes = require('./routes')
 
 // require db
 require('./config/mongoose')
-
-app.use(session({
-  secret: 'DaddysSecret',
-  resave: false,
-  saveUninitialized: true
-}))
-
-const usePassport = require('./config/passport')
-usePassport(app)
-app.use(routes)
-
 // require view engines
 const exphbs = require('express-handlebars')
 
@@ -34,6 +23,16 @@ app.set('view engine', 'handlebars')
 
 // setting static files
 app.use(express.static('public'))
+
+app.use(session({
+  secret: 'DaddysSecret',
+  resave: false,
+  saveUninitialized: true
+}))
+
+const usePassport = require('./config/passport')
+usePassport(app)
+app.use(routes)
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)
