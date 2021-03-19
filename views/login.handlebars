@@ -1,0 +1,17 @@
+<form action="/login" method='POST' class="container">
+  <h1>Login</h1>
+  <div class="input-row">
+    <input type="text" name='email' id='email' autocomplete="on" required>
+    <label for="email" class='input-label'>
+      <span class='label-content'><i class="fas fa-envelope"></i>Email</span>
+    </label>
+  </div>
+  <div class="input-row">
+    <input type="text" name='password' id='password' autocomplete="off" required>
+    <label for="password" class='input-label'>
+      <span class='label-content'><i class="fas fa-lock"></i>Password</span>
+    </label>
+  </div>
+  <button class="login-btn">login</button>
+  <p>Not A Member ? <a class='login-link' href="/users/register">Register</a></p>
+</form>
