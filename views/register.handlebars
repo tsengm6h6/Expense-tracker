@@ -1,31 +1,31 @@
-<form action="/register" method='POST' class="container">
+<form action="/users/register" method='POST' class="container">
   <h1>Register</h1>
 
   <div class="input-row">
-    <input type="text" name='username' id='username' autocomplete="on" required>
-    <label for="username" class='input-label'>
+    <input type="text" name='userName' id='userName' autocomplete="on" value='{{userName}}' required>
+    <label for="userName" class='input-label'>
       <span class='label-content'><i class="fas fa-user"></i>User Name</span>
     </label>
   </div>
 
   <div class="input-row">
-    <input type="text" name='email' id='email' autocomplete="on" required>
+    <input type="text" name='email' id='email' autocomplete="on" value='{{email}}' required>
     <label for="email" class='input-label'>
       <span class='label-content'><i class="fas fa-envelope"></i>Email</span>
     </label>
   </div>
   <div class="input-row">
-    <input type="text" name='password' id='password' autocomplete="on" required>
+    <input type="text" name='password' id='password' autocomplete="on" value='{{password}}' required>
     <label for="password" class='input-label'>
       <span class='label-content'><i class="fas fa-lock"></i>Password</span>
     </label>
   </div>
   <div class="input-row">
-    <input type="text" name='checkPassword' id='checkPassword' autocomplete="on" required>
+    <input type="text" name='checkPassword' id='checkPassword' autocomplete="on" value='{{checkPassword}}' required>
     <label for="checkPassword" class='input-label'>
       <span class='label-content'><i class="fas fa-lock"></i>Check Password</span>
     </label>
   </div>
-  <button class="login-btn">Register</button>
+  <button class="login-btn" type="submit">Register</button>
   <p>Have An Account ? <a class='login-link' href="/">Login</a></p>
 </form>

@@ -5,10 +5,6 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 
-// require body-parser and setting
-const bodyParser = require('body-parser')
-router.use(bodyParser.urlencoded({ extended: true }))
-
 // Log catIcon
 const iconList = {}
 Category.find()

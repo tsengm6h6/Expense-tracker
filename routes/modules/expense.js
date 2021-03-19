@@ -2,19 +2,11 @@
 const express = require('express')
 const router = express.Router()
 
-// require model
-const Record = require('../../models/record')
-
 // require moment
 const moment = require('moment')
 
-// require method-override and setting
-const methodOverride = require('method-override')
-router.use(methodOverride('_method'))
-
-// require body-parser and setting
-const bodyParser = require('body-parser')
-router.use(bodyParser.urlencoded({ extended: true }))
+// require model
+const Record = require('../../models/record')
 
 // 取得新增頁面
 router.get('/new', (req, res) => {
