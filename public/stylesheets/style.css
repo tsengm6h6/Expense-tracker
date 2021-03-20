@@ -295,7 +295,7 @@ input:valid + .input-label .label-content {
 }
 
 .login-btn {
-  padding: 0.8rem 3rem;
+  padding: 0.8rem 1.5rem;
   margin: 1rem 0;
   color: #F8F9FD;
   background:  #de847c;
@@ -307,6 +307,9 @@ input:valid + .input-label .label-content {
   box-shadow: 2px 2px 0px #be716a;
   cursor: pointer;
   position: relative;
+  font-size: 1rem;
+  width: 80%;
+  text-align: center;
 }
 
 .login-btn:active {
@@ -346,4 +349,11 @@ input:valid + .input-label .label-content {
 .error{
   background:#f57c96;
   color: #f8f9fd;
+}
+
+
+.facebook-btn{
+  background: rgb(121, 136, 221);
+  box-shadow: 2px 2px 0px rgb(105, 117, 187);
+  margin: 0 0 2rem;
 }

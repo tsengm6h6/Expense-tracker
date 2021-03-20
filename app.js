@@ -1,7 +1,12 @@
 // require express
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3000
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 const session = require('express-session')
 const routes = require('./routes')
 const flash = require('connect-flash')
@@ -26,7 +31,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.use(session({
-  secret: 'DaddysSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
