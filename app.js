@@ -32,6 +32,15 @@ app.use(session({
 
 const usePassport = require('./config/passport')
 usePassport(app)
+// 驗證之後，使用路由之前，將登入資訊存放在res.local
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  console.log(req.session)
+  console.log(res.locals)
+  next()
+})
+
 app.use(routes)
 
 app.listen(PORT, () => {

@@ -16,9 +16,13 @@
   {{!-- navbar --}}
   <nav>
     <a href="/">
-      <h1>Daddy's Expense Tracker</h1>
+      <h1>{{#if isAuthenticated}} {{user.userName}}'s {{else}} Daddy's {{/if}} Expense Tracker</h1>
     </a>
-    <a href="/users/logout" class="icon login-icon"><i class="fas fa-user"></i></a>
+    {{#if isAuthenticated}}
+    <a href="/users/logout" class="icon login-icon"><i class="fas fa-sign-out-alt"></i></a>
+    {{else}}
+    <a href="/users/login" class="icon login-icon"><i class="fas fa-user"></i></a>
+    {{/if}}
   </nav>
 
   {{{ body }}}

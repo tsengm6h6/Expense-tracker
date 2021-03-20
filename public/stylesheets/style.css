@@ -43,6 +43,7 @@ nav {
 h1 {
   font-family: "Yusei Magic", sans-serif;
   font-weight: 400;
+  text-transform: capitalize;
 }
 
 .login-icon {
