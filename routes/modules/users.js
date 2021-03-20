@@ -3,6 +3,7 @@ const router = express.Router()
 
 const User = require('../../models/user')
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 router.get('/login', (req, res) => {
   res.render('login')
@@ -40,12 +41,13 @@ router.post('/register', (req, res) => {
         return res.render('register', { userName, email, password, checkPassword, error_msg: req.flash('error_msg') })
       }
       // 未註冊過，則新增到資料庫
-      return User.create({
-        userName,
-        email,
-        password,
-        checkPassword
-      }).then(() => res.redirect('/'))
+      return bcrypt.hash(password, 10)
+        .then(hash => User.create({
+          userName,
+          email,
+          password: hash
+        }))
+        .then(() => res.redirect('/'))
     })
     .catch(err => console.log(err))
 })

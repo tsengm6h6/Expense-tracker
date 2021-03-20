@@ -2,26 +2,26 @@
   <h1>Register</h1>
   {{> message}}
   <div class="input-row">
-    <input type="text" name='userName' id='userName' autocomplete="on" value='{{userName}}'>
+    <input type="text" name='userName' id='userName' autocomplete="on" value='{{userName}}' required>
     <label for="userName" class='input-label'>
       <span class='label-content'><i class="fas fa-user"></i>User Name</span>
     </label>
   </div>
 
   <div class="input-row">
-    <input type="text" name='email' id='email' autocomplete="on" value='{{email}}'>
+    <input type="text" name='email' id='email' autocomplete="on" value='{{email}}' required>
     <label for="email" class='input-label'>
       <span class='label-content'><i class="fas fa-envelope"></i>Email</span>
     </label>
   </div>
   <div class="input-row">
-    <input type="text" name='password' id='password' autocomplete="on" value='{{password}}'>
+    <input type="text" name='password' id='password' autocomplete="on" value='{{password}}' required>
     <label for="password" class='input-label'>
       <span class='label-content'><i class="fas fa-lock"></i>Password</span>
     </label>
   </div>
   <div class="input-row">
-    <input type="text" name='checkPassword' id='checkPassword' autocomplete="on" value='{{checkPassword}}'>
+    <input type="text" name='checkPassword' id='checkPassword' autocomplete="on" value='{{checkPassword}}' required>
     <label for="checkPassword" class='input-label'>
       <span class='label-content'><i class="fas fa-lock"></i>Check Password</span>
     </label>
