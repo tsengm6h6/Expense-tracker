@@ -246,7 +246,11 @@ i {
   box-shadow: 3px 3px 20px rgba(122,122,122,0.1);
   border-radius: 8px;
   overflow: hidden;
-  margin: 1rem 0;
+  margin: 5px 0;
+}
+
+h1 + .input-row {
+  margin-top: 1.5rem;
 }
 
 input {
@@ -256,7 +260,7 @@ input {
   outline: none;
   border: none;
   background-color: none;
-  color: #c9a9e2;
+  color: #5f9476;
   font-size: 1.2rem;
 }
 
@@ -292,7 +296,7 @@ input:valid + .input-label .label-content {
 
 .login-btn {
   padding: 0.8rem 3rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   color: #F8F9FD;
   background:  #de847c;
   text-transform: uppercase;
@@ -318,4 +322,28 @@ input:valid + .input-label .label-content {
 .login-link:hover{
   color: #4b755d;
   text-decoration: underline;
+}
+
+.message-container{
+  padding: 1rem;
+  margin: 10px 0;
+  box-shadow: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.warning {
+  background:rgb(233, 189, 132);
+  color: rgb(82, 80, 80);
+}
+
+.success {
+  background:#5f9476;
+  color: #fff;
+}
+
+.error{
+  background:#f57c96;
+  color: #f8f9fd;
 }

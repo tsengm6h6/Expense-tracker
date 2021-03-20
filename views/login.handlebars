@@ -1,5 +1,6 @@
 <form action="/users/login" method='POST' class="container">
   <h1>Login</h1>
+  {{> message}}
   <div class="input-row">
     <input type="text" name='email' id='email' autocomplete="on" required>
     <label for="email" class='input-label'>
@@ -7,7 +8,7 @@
     </label>
   </div>
   <div class="input-row">
-    <input type="text" name='password' id='password' autocomplete="off" required>
+    <input type="text" name='password' id='password' autocomplete="on" required>
     <label for="password" class='input-label'>
       <span class='label-content'><i class="fas fa-lock"></i>Password</span>
     </label>

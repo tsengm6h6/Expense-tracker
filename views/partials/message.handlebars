@@ -1,0 +1,19 @@
+{{#if warning_msg}}
+<div class="container message-container warning">
+  {{warning_msg}}
+</div>
+{{/if}}
+
+{{#if success_msg}}
+<div class="container message-container success">
+  {{success_msg}}
+</div>
+{{/if}}
+
+{{#if error_msg}}
+{{#each error_msg}}
+<div class="container message-container error">
+  <p>{{this}}</p>
+</div>
+{{/each}}
+{{/if}}

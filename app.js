@@ -4,6 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const session = require('express-session')
 const routes = require('./routes')
+const flash = require('connect-flash')
 
 // require db
 require('./config/mongoose')
@@ -30,14 +31,16 @@ app.use(session({
   saveUninitialized: true
 }))
 
+app.use(flash())
 const usePassport = require('./config/passport')
 usePassport(app)
 // 驗證之後，使用路由之前，將登入資訊存放在res.local
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
-  console.log(req.session)
-  console.log(res.locals)
+  res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
   next()
 })
 

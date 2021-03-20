@@ -17,12 +17,14 @@ router.get('/new', (req, res) => {
 router.post('/new', (req, res) => {
   const { title, category, amount } = req.body
   const date = req.body.date
+  const userId = req.user._id
   // TODO: 必填驗證
   return Record.create({
     title,
     date: moment(date).format('YYYY/MM/DD'),
     category,
-    amount
+    amount,
+    userId
   })
     .then(res.redirect('/'))
     .catch(err => console.log(err))
@@ -30,8 +32,9 @@ router.post('/new', (req, res) => {
 
 // 取得修改頁面
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  Record.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+  Record.findOne({ _id, userId })
     .lean()
     .then(theRecord => {
       let date = new Date(theRecord.date)
@@ -43,9 +46,10 @@ router.get('/:id/edit', (req, res) => {
 
 // 編輯支出
 router.put('/:id', (req, res) => {
-  const id = req.params.id
+  const _id = req.params.id
+  const userId = req.user._id
   const { title, date, category, amount } = req.body
-  return Record.findById(id)
+  return Record.findOne({ _id, userId })
     .then(theRecord => {
       theRecord.title = title
       theRecord.date = date
@@ -59,8 +63,9 @@ router.put('/:id', (req, res) => {
 
 // 刪除支出
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+  return Record.findOne({ _id, userId })
     .then(theRecord => theRecord.remove())
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))

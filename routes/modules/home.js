@@ -19,9 +19,10 @@ Category.find()
 // setting routes
 router.get('/', (req, res) => {
   const category = req.query.category
+  const userId = req.user._id
   let filteredList = []
   let totalAmount = 0
-  return Record.find()
+  return Record.find({ userId })
     .lean()
     .then((records) => {
       if (!category || category === 'all') {
