@@ -19,6 +19,9 @@ const recordSchema = new Schema({
     default: 0,
     required: true
   },
+  merchant: {
+    type: String
+  },
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',

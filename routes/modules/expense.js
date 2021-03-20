@@ -15,7 +15,7 @@ router.get('/new', (req, res) => {
 
 // 送出新增表單
 router.post('/new', (req, res) => {
-  const { title, category, amount } = req.body
+  const { title, category, amount, merchant } = req.body
   const date = req.body.date
   const userId = req.user._id
   // TODO: 必填驗證
@@ -24,6 +24,7 @@ router.post('/new', (req, res) => {
     date: moment(date).format('YYYY/MM/DD'),
     category,
     amount,
+    merchant,
     userId
   })
     .then(res.redirect('/'))
@@ -48,13 +49,14 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const _id = req.params.id
   const userId = req.user._id
-  const { title, date, category, amount } = req.body
+  const { title, date, category, amount, merchant } = req.body
   return Record.findOne({ _id, userId })
     .then(theRecord => {
       theRecord.title = title
       theRecord.date = date
       theRecord.category = category
       theRecord.amount = amount
+      theRecord.merchant = merchant
       return theRecord.save()
     })
     .then(() => res.redirect('/'))
