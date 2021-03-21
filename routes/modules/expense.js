@@ -2,8 +2,8 @@
 const express = require('express')
 const router = express.Router()
 
-// require moment
-const moment = require('moment')
+// require date-fns
+const format = require('date-fns/format')
 
 // require model
 const Record = require('../../models/record')
@@ -15,13 +15,13 @@ router.get('/new', (req, res) => {
 
 // 送出新增表單
 router.post('/new', (req, res) => {
-  const { title, category, amount, merchant } = req.body
-  const date = req.body.date
+  const { title, date, category, amount, merchant } = req.body
+  const formatDate = format(new Date(date), 'yyyy/MM/dd')
   const userId = req.user._id
   // TODO: 必填驗證
   return Record.create({
     title,
-    date: moment(date).format('YYYY/MM/DD'),
+    date: formatDate,
     category,
     amount,
     merchant,
@@ -38,9 +38,8 @@ router.get('/:id/edit', (req, res) => {
   Record.findOne({ _id, userId })
     .lean()
     .then(theRecord => {
-      let date = new Date(theRecord.date)
-      date = moment(date).format().split('T')[0]
-      res.render('edit', { theRecord, date })
+      const formatDate = format(new Date(theRecord.date), 'yyyy-MM-dd')
+      res.render('edit', { theRecord, date: formatDate })
     })
     .catch(err => console.log(err))
 })
@@ -53,7 +52,7 @@ router.put('/:id', (req, res) => {
   return Record.findOne({ _id, userId })
     .then(theRecord => {
       theRecord.title = title
-      theRecord.date = date
+      theRecord.date = format(new Date(date), 'yyyy/MM/dd')
       theRecord.category = category
       theRecord.amount = amount
       theRecord.merchant = merchant

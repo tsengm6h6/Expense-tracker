@@ -1,15 +1,28 @@
 <div class="container">
   <!--  filter  -->
-  <form class="form-item" name='filter' action="/" method="GET">
-    <p>類別：</p>
-    <select id="category" name='category' onchange="filter.submit()">
-      <option value="all" {{equal category "all" }} selected>全部</option>
-      <option value="household" {{equal category "household" }}>家居物業</option>
-      <option value="transport" {{equal category "transport" }}>交通出行</option>
-      <option value="entertainment" {{equal category "entertainment" }}>休閒娛樂</option>
-      <option value="grocery" {{equal category "grocery" }}>餐飲食品</option>
-      <option value="others" {{equal category "others" }}>其他</option>
-    </select>
+  <form action="/" method="GET">
+    <div class="form-item">
+      <p>類別：</p>
+      <select id="category" name='category' onchange="this.form.submit()">
+        <option value="all" {{equal category "all" }} selected>全部</option>
+        <option value="household" {{equal category "household" }}>家居物業</option>
+        <option value="transport" {{equal category "transport" }}>交通出行</option>
+        <option value="entertainment" {{equal category "entertainment" }}>休閒娛樂</option>
+        <option value="grocery" {{equal category "grocery" }}>餐飲食品</option>
+        <option value="others" {{equal category "others" }}>其他</option>
+      </select>
+    </div>
+    <div class="form-item">
+      <p>月份：</p>
+      <select id="month" name='month' onchange="this.form.submit()">
+        <option value="all" {{equal month "all" }} selected>全部</option>
+        <option value="january" {{equal month "january" }}>一月</option>
+        <option value="february" {{equal month "february" }}>二月</option>
+        <option value="march" {{equal month "march" }}>三月</option>
+        <option value="april" {{equal month "april" }}>四月</option>
+        <option value="may" {{equal month "may" }}>五月</option>
+      </select>
+    </div>
   </form>
   <!--  totalAmount  -->
   <div class="totalAmount">

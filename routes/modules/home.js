@@ -5,7 +5,7 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 
-// Log catIcon
+// Log categoryIcon
 const iconList = {}
 Category.find()
   .lean()
@@ -19,6 +19,7 @@ Category.find()
 // setting routes
 router.get('/', (req, res) => {
   const category = req.query.category
+  // const month = req.query.month
   const userId = req.user._id
   let filteredList = []
   let totalAmount = 0
@@ -26,11 +27,15 @@ router.get('/', (req, res) => {
     .lean()
     .then((records) => {
       if (!category || category === 'all') {
-        filteredList.push(...records)
+        return filteredList.push(...records)
       } else {
         filteredList = records.filter(item => item.category === category)
+        return filteredList
       }
     })
+    // .then((filteredList) => {
+    //   console.log(filteredList)
+    // })
     .then(() => {
       filteredList.forEach(item => {
         totalAmount += item.amount
