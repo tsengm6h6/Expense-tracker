@@ -4,7 +4,7 @@
     <div class="form-item">
       <p>類別：</p>
       <select id="category" name='category' onchange="this.form.submit()">
-        <option value="all" {{equal category "all" }} selected>全部</option>
+        <option value="" {{equal category "" }} selected>全部</option>
         <option value="household" {{equal category "household" }}>家居物業</option>
         <option value="transport" {{equal category "transport" }}>交通出行</option>
         <option value="entertainment" {{equal category "entertainment" }}>休閒娛樂</option>
@@ -21,6 +21,13 @@
         <option value="march" {{equal month "march" }}>三月</option>
         <option value="april" {{equal month "april" }}>四月</option>
         <option value="may" {{equal month "may" }}>五月</option>
+        <option value="june" {{equal month "june" }}>六月</option>
+        <option value="july" {{equal month "july" }}>七月</option>
+        <option value="august" {{equal month "august" }}>八月</option>
+        <option value="september" {{equal month "september" }}>九月</option>
+        <option value="october" {{equal month "october" }}>十月</option>
+        <option value="november" {{equal month "november" }}>十一月</option>
+        <option value="december" {{equal month "december" }}>十二月</option>
       </select>
     </div>
   </form>
@@ -39,7 +46,8 @@
         </div>
         <div class="item">
           <h3>{{this.title}}</h3>
-          <p>{{this.date}}</p>
+          <p>日期：{{this.date}}</p>
+          <p>店家：{{this.merchant}}</p>
         </div>
         <div class="amount">{{this.amount}}</div>
         <div class="button">
