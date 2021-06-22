@@ -1,11 +1,11 @@
 # Daddy's Expense Tracker
-A simple web application built with Node.js, Express and MongoDB to help my dad track his expense.
+以 Node.js、Express、及 MongoDB 打造的全端應用程式，用來幫助健忘的老爸紀錄生活開銷:laughing:
 
-## 實作功能
+## 實作重點
 - 使用 Express 建構 MVC 模式的應用程式
 - 使用 express.Router 建立模組路由
 - 透過 Handlebars 樣板引擎產生 HTML 檔案
-- 透過 Mongoose 語法操作 MongoDB 資料庫，完成 CRUD 功能實作
+- 透過 Mongoose 語法操作 MongoDB 資料庫完成 CRUD 功能
 - 使用 Passport.js 套件實行本地、臉書驗證功能
 - 使用 bcrypt.js 套件將使用者密碼加密
 - 建立 .env 管理敏感資訊
