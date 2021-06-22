@@ -9,7 +9,11 @@ A simple web application built with Node.js, Express and MongoDB to help my dad 
 - 使用 Passport.js 套件實行本地、臉書驗證功能
 - 使用 bcrypt.js 套件將使用者密碼加密
 - 建立 .env 管理敏感資訊
-- 部署專案至 Heroku [按此前往](ancient-earth-70377.herokuapp.com/)
+- 部署專案至 Heroku [按此前往](https://ancient-earth-70377.herokuapp.com/users/login)
+
+### 測試帳號
+- 帳號：user1@example.com
+- 密碼：12345678
 
 
 ![alt 首頁](https://i.imgur.com/LIayIke.gif)
