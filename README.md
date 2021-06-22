@@ -16,7 +16,7 @@ A simple web application built with Node.js, Express and MongoDB to help my dad 
 - 密碼：12345678
 
 
-![alt 首頁](https://i.imgur.com/LIayIke.gif)
+![alt 首頁](https://i.imgur.com/G6bR6Bk.gif)
 
 ## Installation
 
