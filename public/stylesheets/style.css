@@ -85,6 +85,7 @@ h1 {
 .form-item select,
 .form-item input {
   flex-grow: 1;
+  width: auto;
   height: 2rem;
   font-size: 1rem;
   border-radius: 5px;
@@ -224,14 +225,14 @@ i {
   width: 7rem;
   height: 2rem;
   border-radius: 20px;
-  background-color: #88DEB0;
+  background-color: #5F9476;
   color: #fff;
   font-size: 1rem;
 }
 
 .edit-btn.leave{
-  background-color: #5F9476;
-  margin-left: 5px;
+  background-color: #88DEB0;
+  margin-right: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
