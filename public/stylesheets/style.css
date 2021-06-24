@@ -328,6 +328,16 @@ input:valid + .input-label .label-content {
   text-decoration: underline;
 }
 
+.login-link:active,
+.login-link:focus {
+  color: rgb(121, 136, 221);
+}
+
+.privacy {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
 .message-container{
   padding: 1rem;
   margin: 10px 0;
