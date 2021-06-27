@@ -55,6 +55,24 @@ router.put('/:id', (req, res) => {
   const _id = req.params.id
   const userId = req.user._id
   const { title, date, category, amount, merchant } = req.body
+
+  // 驗證必填欄位
+  if (!title || !date || !category || !amount) {
+    return Record.findOne({ _id, userId })
+      .lean()
+      // 保留已編輯的部分並返回
+      .then(theRecord => {
+        theRecord.title = title || ''
+        theRecord.date = date || ''
+        theRecord.category = category || ''
+        theRecord.amount = amount || null
+        theRecord.merchant = merchant || ''
+        req.flash('warning_msg', '*欄位為必填，請再次確認')
+        return res.render('edit', { theRecord, date, warning_msg: req.flash('warning_msg') })
+      }) // 返回頁面
+      .catch(err => console.log(err))
+  }
+  // 儲存修改資料
   return Record.findOne({ _id, userId })
     .then(theRecord => {
       theRecord.title = title
