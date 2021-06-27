@@ -424,6 +424,10 @@ input:valid + .input-label .label-content {
 }
 
 @media only screen and (max-width: 375px) {
+  .nav-container {
+    padding: 8px;
+  }
+
   .container {
     padding: 2rem 8px 3rem;
   }
