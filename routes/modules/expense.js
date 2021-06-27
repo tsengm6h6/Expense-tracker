@@ -8,9 +8,10 @@ const format = require('date-fns/format')
 // require model
 const Record = require('../../models/record')
 
-// 取得新增頁面
+// 取得新增頁面，預設日期為今天
 router.get('/new', (req, res) => {
-  res.render('new')
+  const today = format(new Date(), 'yyyy-MM-dd')
+  res.render('new', { date: today })
 })
 
 // 送出新增表單
@@ -18,7 +19,12 @@ router.post('/new', (req, res) => {
   const { title, date, category, amount, merchant } = req.body
   const formatDate = format(new Date(date), 'yyyy/MM/dd')
   const userId = req.user._id
-  // TODO: 必填驗證
+  // 驗證必填欄位
+  if (!title || !date || !category || !amount) {
+    req.flash('warning_msg', '*欄位為必填，請再次確認')
+    return res.render('new', { title, date, category, amount, warning_msg: req.flash('warning_msg') })
+  }
+
   return Record.create({
     title,
     date: formatDate,

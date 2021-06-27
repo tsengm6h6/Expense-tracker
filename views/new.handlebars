@@ -4,28 +4,29 @@
     <p>*為必填欄位</p>
     <span>請填入您的支出</span>
   </div>
+  {{> message}}
   {{!-- form --}}
   <div class="form-item">
-    <label for='title'>名稱：</label>
-    <input type="text" id='title' name='title'>
+    <label for='title'>*名稱：</label>
+    <input type="text" id='title' name='title' value="{{title}}">
   </div>
   <div class="form-item">
-    <label for='date'>日期：</label>
-    <input type="date" id='date' name='date'>
+    <label for='date'>*日期：</label>
+    <input type="date" id='date' name='date' value="{{date}}">
   </div>
   <div class="form-item">
-    <label for='amount'>金額：</label>
-    <input type="number" id='amount' name='amount'>
+    <label for='amount'>*金額：</label>
+    <input type="number" id='amount' name='amount' value="{{amount}}">
   </div>
   <div class="form-item">
-    <label for='category'>類別：</label>
+    <label for='category'>*類別：</label>
     <select id="category" name='category'>
-      <option selected disabled>---請選擇---</option>
-      <option value="household">家居物業</option>
-      <option value="transport">交通出行</option>
-      <option value="entertainment">休閒娛樂</option>
-      <option value="grocery">餐飲食品</option>
-      <option value="others">其他</option>
+      <option value="none" {{equal category "none" }} selected disabled>---請選擇---</option>
+      <option value="household" {{equal category "household" }}>家居物業</option>
+      <option value="transport" {{equal category "transport" }}>交通出行</option>
+      <option value="entertainment" {{equal category "entertainment" }}>休閒娛樂</option>
+      <option value="grocery" {{equal category "grocery" }}>餐飲食品</option>
+      <option value="others" {{equal category "others" }}>其他</option>
     </select>
   </div>
   <div class="form-item">
