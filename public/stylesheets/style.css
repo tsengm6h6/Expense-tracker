@@ -19,6 +19,7 @@ a:focus {
 }
 
 body {
+  width: 100%;
   height: auto;
   min-height: 100vh;
   background-image: linear-gradient(
@@ -34,29 +35,34 @@ nav {
   height: 10vh;
   background: #de847c;
   color: #fff;
+}
+
+.nav-container {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
 }
 
 h1 {
   font-family: "Yusei Magic", sans-serif;
   font-weight: 400;
   text-transform: capitalize;
-}
-
-.login-icon {
-  position: absolute;
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
+  font-size: 1.25rem;
 }
 
 .container {
   width: 100%;
   height: auto;
-  min-width: 300px;
   max-width: 500px;
   display: flex;
   justify-content: center;
@@ -92,6 +98,7 @@ h1 {
   padding: 0 10px;
   color: #5f9476;
   border: none;
+  background-color: #fff;
 }
 
 .form-item select:focus,
@@ -148,10 +155,7 @@ li {
   color: #fff;
   box-shadow: 6px 6px 20px rgba (122, 122, 122, 0.8);
   margin-bottom: 1rem;
-}
-
-li div {
-  margin: 5px 10px;
+  padding: 5px;
 }
 
 li .item {
@@ -189,8 +193,8 @@ i {
 }
 
 .icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 35px;
+  height: 35px;
   background: #fff;
   border-radius: 50%;
   display: flex;
@@ -202,21 +206,61 @@ i {
 
 .icon i {
   color: #de847c;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
+}
+
+.login-icon {
+  position: relative;
+}
+
+.login-icon:hover {
+  background: #fffbfa;
+}
+
+.login-icon:active{
+  top: 2px;
 }
 
 .item-icon, .item-icon i {
   cursor: default;
+  margin: 0 5px;
+}
+
+.add-icon, .undo-icon {
+  position: absolute;
+  bottom: 2%;
 }
 
 .add-icon {
   background: #de847c;
-  position: absolute;
-  bottom: 2%;
   right: 3%;
+  box-shadow: -1px 2px 2px #be716a;
 }
 
-.add-icon i {
+
+.add-icon:hover {
+  background: #de847ce0;
+}
+
+.undo-icon {
+  background: #e4ca57;
+  right: 12%;
+  box-shadow: -1px 2px 2px #e4ce6f;
+}
+
+.undo-icon:hover {
+  background: #f1df8d;
+}
+
+
+.add-icon:active,
+.undo-icon:active {
+  bottom: 1.5%;
+  box-shadow: none;
+}
+
+.add-icon i,
+.undo-icon i {
   color: #fff;
 }
 
@@ -225,18 +269,29 @@ i {
   width: 7rem;
   height: 2rem;
   border-radius: 20px;
-  background-color: #5F9476;
+  background-color: #69a382;
   color: #fff;
   font-size: 1rem;
+  box-shadow: 2px 2px 2px #598b6f;
+  position: relative;
 }
 
 .edit-btn.leave{
-  background-color: #88DEB0;
-  margin-right: 5px;
+  background-color: #7bcfa3;
+  margin-right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 2px 2px 2px #6eb38e;
+  position: relative;
 }
+
+.edit-btn:active,
+.edit-btn.leave:active {
+  top: 2px;
+  box-shadow: none;
+}
+
 
 /* login page */
 .input-row {
@@ -300,7 +355,6 @@ input:valid + .input-label .label-content {
   margin: 1rem 0;
   color: #F8F9FD;
   background:  #de847c;
-  text-transform: uppercase;
   letter-spacing: 2px;
   border-radius: 30px;
   outline: none;
@@ -364,7 +418,34 @@ input:valid + .input-label .label-content {
 
 
 .facebook-btn{
-  background: rgb(121, 136, 221);
-  box-shadow: 2px 2px 0px rgb(105, 117, 187);
+  background: #5890FF;
+  box-shadow: 2px 2px 0px #1877F2;
   margin: 0 0 2rem;
+}
+
+@media only screen and (max-width: 375px) {
+  .container {
+    padding: 2rem 8px 3rem;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon i {
+    font-size: 1rem;
+  }
+
+  .message-container {
+    padding: 1rem;
+  }
+
+  .login-btn {
+    font-size: 0.75rem;
+  }
+
+  .undo-icon {
+    right: 14%;
+  }
 }

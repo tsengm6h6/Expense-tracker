@@ -15,14 +15,16 @@
 <body>
   {{!-- navbar --}}
   <nav>
-    <a href="/">
-      <h1>{{#if isAuthenticated}} {{user.userName}}'s {{else}} Daddy's {{/if}} Expense Tracker</h1>
-    </a>
-    {{#if isAuthenticated}}
-    <a href="/users/logout" class="icon login-icon"><i class="fas fa-sign-out-alt"></i></a>
-    {{else}}
-    <a href="/users/login" class="icon login-icon"><i class="fas fa-user"></i></a>
-    {{/if}}
+    <div class="nav-container">
+      <a href="/" class="title">
+        <h1>{{#if isAuthenticated}} {{user.userName}}'s {{else}} Daddy's {{/if}} Expense Tracker</h1>
+      </a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="icon login-icon"><i class="fas fa-sign-out-alt"></i></a>
+      {{else}}
+      <a href="/users/login" class="icon login-icon"><i class="fas fa-user"></i></a>
+      {{/if}}
+    </div>
   </nav>
 
   {{{ body }}}
