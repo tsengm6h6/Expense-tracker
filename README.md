@@ -1,5 +1,5 @@
 # Daddy's Expense Tracker
-以 Node.js、Express、及 MongoDB 打造的全端應用程式，用來幫助健忘的老爸紀錄生活開銷:laughing:
+以 Node.js、Express、及 MongoDB 打造的全端應用程式，用來幫助紀錄生活開銷
 
 ## 實作重點
 - 使用 Express 建構 MVC 模式的應用程式
@@ -9,8 +9,7 @@
 - 使用 Passport.js 套件實行本地、臉書驗證功能
 - 使用 bcrypt.js 套件將使用者密碼加密
 - 建立 .env 管理敏感資訊
-- 部署專案至 Heroku [按此前往](https://ancient-earth-70377.herokuapp.com/users/login)
-
+- 部署專案至 Heroku
 ### 測試帳號
 - 帳號：user1@example.com
 - 密碼：12345678
