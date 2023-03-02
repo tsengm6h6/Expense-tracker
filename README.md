@@ -1,4 +1,4 @@
-# Daddy's Expense Tracker
+# Expense Tracker
 以 Node.js、Express、及 MongoDB 打造的全端應用程式，用來幫助紀錄生活開銷
 
 ## 實作重點
